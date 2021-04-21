@@ -25,6 +25,21 @@ export class BitInfoServiceService {
    
   }//getQuestions
 
+  public postQuestion() : Observable<any> {
+    
+    return this.http.post<any>(environment.bitInfoDBHost + '/questions', 
+      { 
+        question: 'What time is it?',
+        user : '607f21c1d82b54b50cc4e3f9'
+      })
+      .pipe(
+        catchError((operation, result) => {
+          return of(false);
+        })// catchError
+      )//pipe
+      
+  } //postQuestion
+
   /*
   public saveQuestion(question : String, userName : String) : Observable<any> {
     //return this.http.put

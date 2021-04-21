@@ -15,12 +15,24 @@ export class ForumComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchQuestions();    
+
+  }//ngOnInit
+
+  private fetchQuestions(){
     this.bitInfoService.fetchQuestions().subscribe( (data: any) => {
       //console.log('data=' + data);
       this.questions = data;
       console.log(this.questions);
-    });    
+    });
+  }
 
-  }//ngOnInit
+  public postQuestion() : void {
+    this.bitInfoService.postQuestion().subscribe((data: any) => {
+      console.log('data=' + data);
+      this.fetchQuestions(); 
+    });
+     
+  }//postQuestion
 
 }
