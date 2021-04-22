@@ -1,9 +1,14 @@
 <h1>Question Forum</h1>
 <h3>Post your questions below! Someone is bound to have an answer!</h3>
 
+    
+<textarea id="newQuestion" [(ngModel)]="newQuestion" rows="4" cols="50"> </textarea>
+    <br><br>   
 <button (click)="postQuestion()">Post Question</button>
+
 <ul>
     <li *ngFor="let question of questions">
-        {{question.question}}
+        {{question.question}} <label *ngIf="question.user !== undefined && question.user !== null ">({{question.user.userName}})</label>
     </li>
 </ul>
+

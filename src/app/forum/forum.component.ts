@@ -9,28 +9,31 @@ import {BitInfoServiceService} from '../services/bit-info-service.service';
 })
 export class ForumComponent implements OnInit {
   public questions : any;
+  public newQuestion : string = "";
 
   constructor( private bitInfoService : BitInfoServiceService) { 
     
   }
 
   ngOnInit(): void {
-    this.fetchQuestions();    
+    this.fetchQuestions()
 
   }//ngOnInit
 
   private fetchQuestions(){
     this.bitInfoService.fetchQuestions().subscribe( (data: any) => {
       //console.log('data=' + data);
-      this.questions = data;
-      console.log(this.questions);
+      this.questions = data;      
+      this.questions.forEach( question => console.log(question + "; " + question.user));
+      
     });
   }
 
   public postQuestion() : void {
-    this.bitInfoService.postQuestion().subscribe((data: any) => {
-      console.log('data=' + data);
-      this.fetchQuestions(); 
+    //console.log("newQuestion=[" + this.newQuestion + "]");
+    this.bitInfoService.postQuestion(this.newQuestion).subscribe((data: any) => {
+      console.log(data);
+      this.fetchQuestions()
     });
      
   }//postQuestion

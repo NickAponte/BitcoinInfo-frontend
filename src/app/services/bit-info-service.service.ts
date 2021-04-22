@@ -10,8 +10,18 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class BitInfoServiceService {
   private fetchQuestionsURL = environment.bitInfoDBHost + '/questions';  
+  private fetchUsersURL = environment.bitInfoDBHost + '/users';
   
+
   constructor( private http: HttpClient) { }
+  public fetchUserById(userId : string) : Observable<any> {
+    return this.http.get<any>(this.fetchUsersURL + "/" + userId)
+    .pipe(
+      catchError((operation, result) => {
+          return of(false);
+      })// catchError
+    );
+  }
 
   public fetchQuestions() : Observable<any>  {
     console.log("in getQuestions");
@@ -24,12 +34,25 @@ export class BitInfoServiceService {
       );
    
   }//getQuestions
+  
+  public signIn(userName : string, password : string) : Observable<any> {
+    return this.http.post<any>(environment.bitInfoDBHost + '/users/signin', 
+    { 
+      userName: userName,
+      password : password
+    })
+    .pipe(
+      catchError((operation, result) => {
+        return of(false);
+      })// catchError
+    )//pipe
+  }
 
-  public postQuestion() : Observable<any> {
+  public postQuestion(newQuestion : string) : Observable<any> {
     
     return this.http.post<any>(environment.bitInfoDBHost + '/questions', 
       { 
-        question: 'What time is it?',
+        question: newQuestion,
         user : '607f21c1d82b54b50cc4e3f9'
       })
       .pipe(
