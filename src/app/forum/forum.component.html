@@ -1,14 +1,34 @@
 <h1>Question Forum</h1>
 <h3>Post your questions below! Someone is bound to have an answer!</h3>
 
-    
-<textarea id="newQuestion" [(ngModel)]="newQuestion" rows="4" cols="50"> </textarea>
-    <br><br>   
-<button (click)="postQuestion()">Post Question</button>
+ <body>
+<div *ngIf="isUserSignedIn()">
+    <textarea id="newQuestion" [(ngModel)]="newQuestion" rows="2" cols="60"> </textarea>
+        <br><br>   
+    <button (click)="postQuestion()">Post Question</button>
+</div>
 
-<ul>
+<ul [className] = "'question-list'">
     <li *ngFor="let question of questions">
-        {{question.question}} <label *ngIf="question.user !== undefined && question.user !== null ">({{question.user.userName}})</label>
+        <div>{{question.question}} <p [className] = "'user-name'">Asked by User: 
+            <label *ngIf="question.user !== undefined && question.user !== null ">{{question.user.userName}}</label>
+            </p>
+            <div *ngIf="isUserSignedIn()">
+                <div *ngIf="isUserSignedIn()">
+                    <textarea id="newAnswer" [(ngModel)]="newAnswer" rows="2" cols="25"> </textarea>
+                    <br><br>   
+                    <button (click)="postAnswer()">Post Answer</button>
+                </div>
+
+            </div>
+                <button [className] = "'expand-bttn'">+</button>
+            
+        </div>
+        
     </li>
 </ul>
+
+
+ </body>   
+
 

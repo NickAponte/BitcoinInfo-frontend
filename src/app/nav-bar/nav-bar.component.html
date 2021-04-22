@@ -6,23 +6,21 @@
         <h1 [className] = "'app-name'">itInfo </h1>
     </div>
     
+    
+    <div *ngIf="isUserSignedIn() === true">
+        Hello {{userName}}
+    </div>
 
     <span style="display:inline; width: 580px">
+        <button routerLink="/home">home</button>
         <button routerLink="/forum">Forum</button>
         <button routerLink="/news">News</button>
-        <button routerLink="/signin">signin/up</button>
+        <button routerLink="/signin">sign in</button>
+        <button routerLink="/signup">sign up</button>
+        
+        <button >logout</button>
+        
     </span>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

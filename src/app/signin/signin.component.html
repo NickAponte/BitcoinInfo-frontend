@@ -1,4 +1,4 @@
-<p>signin works!</p>
+
 
     <div class="imgcontainer">
       <img src="../assets/bitcoin.png" alt="Avatar" class="avatar" style="width: 150px">
@@ -12,12 +12,11 @@
       <input type="password" [(ngModel)]="password" placeholder="Enter Password" name="psw" required>
   
       <button type="submit" (click)="signIn()">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+
+      {{errorMessage}}
+      <div *ngIf="showErrorMessage">
+        <h1>Invalid username and password Please try again</h1>
+      </div> 
     </div>
   
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
+   

@@ -10,17 +10,39 @@ export class SigninComponent implements OnInit {
 
   userName : string = "";
   password : string = "";
+  showErrorMessage = false;
+  errorMessage = "";
 
   constructor(private bitInfoService : BitInfoServiceService) { }
 
-  ngOnInit(): void {
-  }
-  public signIn(){
-    this.bitInfoService.signIn(this.userName, this.password).subscribe( (data: any) => {
-      //console.log('data=' + data);  
-      window.localStorage['userName'] = data.user.userName    
+  ngOnInit(): void {}
+    
+  
+  // public signIn(){
+  //   this.bitInfoService.signIn(this.userName, this.password).subscribe( (data: any) => {
+  //     //console.log('data=' + data);  
+  //     if(localStorage.getItem('userName')!== null){
+  //       localStorage.removeItem("userName") // logs user out if one is logged in
+  //     }
+  //     window.localStorage['userName'] = data.user.userName    
       
-    });
-  }//signin
+  //   });
+  // }//signin
 
+  public signIn(){
+    
+      this.bitInfoService.signIn(this.userName, this.password).subscribe( (data: any) => {   
+        if(localStorage.getItem('userName')!== null){
+                localStorage.removeItem("userName") // logs user out if one is logged in
+              }     
+        window.localStorage['userName'] = data.user.userName  ; 
+        window.localStorage['userID'] = data.user._id;     
+        this.errorMessage = data;         
+      },
+      err => {
+        alert('here')
+      });
+     
+   }//signin
+  
 }

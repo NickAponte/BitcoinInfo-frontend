@@ -10,6 +10,7 @@ import {BitInfoServiceService} from '../services/bit-info-service.service';
 export class ForumComponent implements OnInit {
   public questions : any;
   public newQuestion : string = "";
+  public newAnswer : string = "";
 
   constructor( private bitInfoService : BitInfoServiceService) { 
     
@@ -37,5 +38,9 @@ export class ForumComponent implements OnInit {
     });
      
   }//postQuestion
+
+  public isUserSignedIn(){
+    return ( window.localStorage.getItem('userName') == null ? false : true );
+  }
 
 }

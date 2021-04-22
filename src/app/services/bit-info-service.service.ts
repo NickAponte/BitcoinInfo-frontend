@@ -47,19 +47,24 @@ export class BitInfoServiceService {
       })// catchError
     )//pipe
   }
-
+  // localStorage.getItem('userName')
   public postQuestion(newQuestion : string) : Observable<any> {
+    if( window.localStorage.getItem('userName') == null ) {
+      window.location.pathname = ('/signin');
+      return of(false);
+    } else{    
     
-    return this.http.post<any>(environment.bitInfoDBHost + '/questions', 
-      { 
-        question: newQuestion,
-        user : '607f21c1d82b54b50cc4e3f9'
-      })
-      .pipe(
-        catchError((operation, result) => {
-          return of(false);
-        })// catchError
-      )//pipe
+        return this.http.post<any>(environment.bitInfoDBHost + '/questions', 
+        { 
+          question: newQuestion,
+          user : window.localStorage["userID"]
+        })
+        .pipe(
+          catchError((operation, result) => {
+            return of(false);
+          })// catchError
+        )//pipe 
+    }  
       
   } //postQuestion
 

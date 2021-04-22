@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  bitInfoDBHost : 'http://localhost:5000'
+  bitInfoDBHost : 'http://localhost:5000',
+  newsApiKey : '874a01369695467f872769bf97b6cdb8'
 };
 
 /*
@@ -15,3 +16,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// curl https://newsapi.org/v2/everything -G \  -d q=Bitcoin \ -d from=2021-04-22 \ -d sortBy=popularity \  -d apiKey=874a01369695467f872769bf97b6cdb8
