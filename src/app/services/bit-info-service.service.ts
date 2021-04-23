@@ -94,10 +94,12 @@ export class BitInfoServiceService {
         { 
           question: question ,
           answer: newAnswer,
-          user : window.localStorage["userID"]
+          user : window.localStorage["userID"],
+          userName : window.localStorage["userName"],   // <----- This is causing the bug 
         })
         .pipe(
           catchError((operation, result) => {
+            console.log("Error in bit-info-service" + result)
             return of(false);
           })// catchError
         )//pipe 
