@@ -30,7 +30,7 @@ export class ForumComponent implements OnInit {
     });
   }
   public postAnswer(questionId : string) : void {
-    //alert("questionId=" + questionId);
+   // alert("questionId=" + questionId);
     let newAnswer = (document.getElementById('newAnswer_' + questionId) as HTMLInputElement).value;    
         
     this.bitInfoService.postAnswer(newAnswer,  questionId ).subscribe((data: any) => {

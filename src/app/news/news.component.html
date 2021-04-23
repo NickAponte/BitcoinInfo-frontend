@@ -1,1 +1,21 @@
-<p>news works!</p>
+
+<body>
+
+    <h1>Latest Bitcoin News</h1>
+    <ul>
+        <li *ngFor="let article of newsApiObj.articles" [className] = "'newsStory'" >
+            <ul> 
+                <li><h3>{{article.title}} {{article.publishedAt}}</h3></li>
+                <li><img src = "{{article.urlToImage}}"></li>
+                <li>{{article.description}}</li>
+                <li></li><br>
+                <a href="{{article.url}}" target="_blank">Read Story</a>
+            </ul>
+            
+            
+        </li>
+        
+    
+        
+    </ul>
+</body>

@@ -2,7 +2,7 @@
 
  <body>
 <div *ngIf="isUserSignedIn()">
-    <textarea id="newQuestion" [(ngModel)]="newQuestion" rows="2" cols="60" placeholder="Post your questions here!  Someone is bound to have an answer!"> </textarea>
+    <textarea id="newQuestion" [(ngModel)]="newQuestion" rows="6" cols="84" placeholder="Post your questions here!  Someone is bound to have an answer!"> </textarea>
         <br><br>   
     <button id="postQuestion-btn" (click)="postQuestion()">Post Question</button>
 </div>
@@ -15,16 +15,16 @@
             <div *ngIf="isUserSignedIn()">
                 <div *ngIf="isUserSignedIn()">
                     <!--<textarea ng-attr-id="{{ question._id }}" id="newAnswer" [(ngModel)]="newAnswer" rows="2" cols="25"> </textarea>-->
-                    <textarea id="newAnswer_{{question._id}}"  rows="2" cols="25"> </textarea>
+                    <textarea id="newAnswer_{{question._id}}"  rows="2" cols="25" placeholder="Post an answer here"> </textarea>
                     <br><br>   
                     <button id="postAnswer-btn" (click)="postAnswer(question._id)">Post Answer</button>
                 </div>
 
             </div>
-                <button [className] = "'expand-bttn'">+</button>
+                <!-- <button [className] = "'expand-bttn'">+</button> -->
                 <div >
                     <li *ngFor="let answer of question.answers">
-                        {{answer.answer}} 
+                        {{answer.answer}} <br><br> Answered by User:  {{answer.userName}} at {{answer.createdAt}}
                         <!-- Posted by User:
                         <label >{{answer}}</label> -->
                     </li>
