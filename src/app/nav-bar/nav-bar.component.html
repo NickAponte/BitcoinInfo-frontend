@@ -7,9 +7,7 @@
     </div>
     
     
-    <div *ngIf="isUserSignedIn() === true">
-        Hello {{userName}}
-    </div>
+    
 
     <span style="display:inline; width: 580px">
         <button routerLink="/home">home</button>
@@ -18,16 +16,18 @@
         <button routerLink="/signin">sign in</button>
         <button routerLink="/signup">sign up</button>
         
-        <button >logout</button>
+        <button (click)="logout()">logout</button>
         
     </span>
 
 
-
+    <div [className] = "'show-user'" *ngIf="isUserSignedIn() === true">
+        Signed In As User: {{userName}}
+    </div>
+    
 
 
 </div>
-
 
 
 

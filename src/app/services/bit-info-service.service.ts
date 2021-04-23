@@ -36,7 +36,23 @@ export class BitInfoServiceService {
   }//getQuestions
   
   public signIn(userName : string, password : string) : Observable<any> {
+    
+
+    
     return this.http.post<any>(environment.bitInfoDBHost + '/users/signin', 
+    { 
+      userName: userName,
+      password : password
+    })
+    .pipe(
+      catchError((operation, result) => {
+        return of(false);
+      })// catchError
+    )//pipe
+    
+  }
+  public signUp(userName : string, password : string) : Observable<any> {
+    return this.http.post<any>(environment.bitInfoDBHost + '/users/signup', 
     { 
       userName: userName,
       password : password
@@ -57,6 +73,27 @@ export class BitInfoServiceService {
         return this.http.post<any>(environment.bitInfoDBHost + '/questions', 
         { 
           question: newQuestion,
+          user : window.localStorage["userID"]
+        })
+        .pipe(
+          catchError((operation, result) => {
+            return of(false);
+          })// catchError
+        )//pipe 
+    }  
+      
+  } //postQuestion
+
+  public postAnswer(newAnswer : string, question : string) : Observable<any> {
+    if( window.localStorage.getItem('userName') == null ) {
+      window.location.pathname = ('/signin');
+      return of(false);
+    } else{    
+    
+        return this.http.post<any>(environment.bitInfoDBHost + '/answers', 
+        { 
+          question: question ,
+          answer: newAnswer,
           user : window.localStorage["userID"]
         })
         .pipe(

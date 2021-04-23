@@ -33,11 +33,16 @@ export class SigninComponent implements OnInit {
     
       this.bitInfoService.signIn(this.userName, this.password).subscribe( (data: any) => {   
         if(localStorage.getItem('userName')!== null){
-                localStorage.removeItem("userName") // logs user out if one is logged in
+          localStorage.removeItem("userName");
+          localStorage.removeItem('userID');
               }     
+        
         window.localStorage['userName'] = data.user.userName  ; 
         window.localStorage['userID'] = data.user._id;     
-        this.errorMessage = data;         
+        this.errorMessage = data;
+       if(localStorage.getItem('userName')!== null){
+        window.location.pathname = ('/home')
+       }          
       },
       err => {
         alert('here')

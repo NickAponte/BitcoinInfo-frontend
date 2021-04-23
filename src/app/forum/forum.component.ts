@@ -10,7 +10,7 @@ import {BitInfoServiceService} from '../services/bit-info-service.service';
 export class ForumComponent implements OnInit {
   public questions : any;
   public newQuestion : string = "";
-  public newAnswer : string = "";
+  public questionid : string = "";
 
   constructor( private bitInfoService : BitInfoServiceService) { 
     
@@ -29,6 +29,18 @@ export class ForumComponent implements OnInit {
       
     });
   }
+  public postAnswer(questionId : string) : void {
+    //alert("questionId=" + questionId);
+    let newAnswer = (document.getElementById('newAnswer_' + questionId) as HTMLInputElement).value;    
+        
+    this.bitInfoService.postAnswer(newAnswer,  questionId ).subscribe((data: any) => {
+      console.log(data);
+      this.fetchQuestions()
+    });
+  }
+
+
+
 
   public postQuestion() : void {
     //console.log("newQuestion=[" + this.newQuestion + "]");

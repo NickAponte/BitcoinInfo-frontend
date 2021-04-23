@@ -15,7 +15,11 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.userName = window.localStorage['userName'];
   }
-
+  public logout(){
+          localStorage.removeItem("userName");
+          localStorage.removeItem('userID');
+          window.location.pathname = ('/signin')
+  }
   public isUserSignedIn(){
     this.userName = window.localStorage['userName'];
     return ( window.localStorage.getItem('userName') == null ? false : true );
