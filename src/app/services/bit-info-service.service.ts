@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Observable,of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
+require('dotenv').config();
 
 @Injectable({
   providedIn: 'root'
@@ -94,17 +94,32 @@ export class BitInfoServiceService {
         { 
           question: question ,
           answer: newAnswer,
-          user : window.localStorage["userID"]
+          user : window.localStorage["userID"],
+          userName : window.localStorage["userName"],   // <----- This is causing the bug 
         })
         .pipe(
           catchError((operation, result) => {
+            console.log("Error in bit-info-service" + result)
             return of(false);
           })// catchError
         )//pipe 
     }  
       
   } //postQuestion
-
+  callNewsApi() {
+    // const headers = new HttpHeaders()
+    //     .set('cache-control', 'no-cache')
+    //     .set('content-type', 'application/json')
+    //     .set('postman-token', 'b408a67d-5f78-54fc-2fb7-00f6e9cefbd1');
+    
+    let url = "https://newsapi.org/v2/everything?q=Bitcoin&from=2021-04-23&sortBy=popularity&apiKey=" + environment.newsApiKey
+    return this.http.get<any>(url)
+      .pipe(
+        catchError((operation, result) => {
+            return of(false);
+        })// catchError
+      );
+}       
   /*
   public saveQuestion(question : String, userName : String) : Observable<any> {
     //return this.http.put
