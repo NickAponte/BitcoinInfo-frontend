@@ -1,5 +1,4 @@
 .nav {
-    /* display: grid;  */
     display: flex;
     background-color: rgb(255, 102, 0);
     color:black; 
@@ -7,7 +6,7 @@
     border-color: black;
     border-style: solid;
     padding-bottom: .8%;
-    
+    height: 150px;
   }
   .nav a {
     color: white; 
@@ -28,9 +27,9 @@
     color:white;
     text-align:center;
     transition: all 0.25s;
-    font-size: 5%;
+    font-size: 10pt;
     width: 20%; 
-    height: 20%;
+    height: 25%;
     grid-column: 6;
     margin-bottom: .2%;
     border-radius: 5%;
@@ -61,7 +60,7 @@
     margin-left: 33%;
     margin-top: 2%;
     margin-right: .5%;
-    height: 5%;
+    height: 15%;
     width: 15%;
     padding: .3%;
     background-color: black;

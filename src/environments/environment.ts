@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   bitInfoDBHost : 'http://localhost:5000',
-  newsApiKey : '874a01369695467f872769bf97b6cdb8'
+  newsApiKey : 'API_KEY'
 };
 
 /*
