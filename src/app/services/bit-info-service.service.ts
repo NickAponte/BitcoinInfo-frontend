@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Observable,of, from } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-require('dotenv').config();
+
 
 @Injectable({
   providedIn: 'root'
