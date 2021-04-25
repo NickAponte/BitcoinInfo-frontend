@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "startold": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstallold": "ng build --aot --prod",
-    "startold": "node server.js"
+    "heroku-postbuild": "ng build --prod"
   },
   "engines": {
     "node": "14.16.1",
@@ -18,8 +19,10 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.10",
+    "@angular/cli": "^11.2.10",
     "@angular/common": "~11.2.10",
     "@angular/compiler": "~11.2.10",
+    "@angular/compiler-cli": "^11.2.11",
     "@angular/core": "~11.2.10",
     "@angular/forms": "~11.2.10",
     "@angular/platform-browser": "~11.2.10",
@@ -28,18 +31,21 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "newsapi": "^2.4.1",
+    "path": "^0.12.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "typescript": "~4.1.5",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.9",
     "@angular/cli": "^11.2.10",
-    "@angular/compiler-cli": "~11.2.10",
+    "@angular/compiler-cli": "^11.2.11",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "angular-cli-ghpages": "^1.0.0-rc.1",
     "codelyzer": "^6.0.0",
+    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.1.0",
