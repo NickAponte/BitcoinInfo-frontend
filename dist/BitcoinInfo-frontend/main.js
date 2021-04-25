@@ -342,7 +342,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: true,
-    bitInfoDBHost: 'https://shrouded-atoll-63514.herokuapp.com/',
+    bitInfoDBHost: 'https://shrouded-atoll-63514.herokuapp.com',
     newsApiKey: '874a01369695467f872769bf97b6cdb8'
 };
 /*
