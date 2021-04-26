@@ -1,27 +1,20 @@
-# BitcoinInfoFrontend  test 1
+# BitcoinInfoFrontend  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
+This is the frontend for the BitInfo forum!  
 
-## Development server
+It uses Angular to render data from an express/node.js server on top of a MongoDB database. https://github.com/NickAponte/BitcoinInfo-backend. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Inside the app, users can create accounts and post/answer questions of other users of the forum.   
 
-## Code scaffolding
+##Future Features. 
+I plan on adding a news feature once a suitable free option is found. I originally had a working news page set up using a great news api, that sadly has.  restrictions on free use limiting it to localhost only.  So sadly, this feature can not cross over to a productiomn environment.   
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To use the app, simply fork and clone the Repo, npi i to install dependencies, and grab your own news api key from here https://newsapi.org/. 
 
-## Build
+You will need a backend build to serve the data from a database,   
+so head over to the Github link above and fork and clone that down as well. npm i to grab those dependencies and create a database to host your data.  
+I used https://cloud.mongodb.com/. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+After that, the project can be run locally by navigating to the root directiory of the front and back end in seperate cli terminals and running. 
+ng serve --open on the front end, and node index.js on the backend. 
+Next, open a browser and open localhost:4200  to see the project running.   
