@@ -1,5 +1,5 @@
 # BitcoinInfoFrontend  
-
+<img width="1402" alt="Screen Shot 2021-04-26 at 8 21 28 AM" src="https://user-images.githubusercontent.com/42632220/116082459-6ae37300-a669-11eb-8d65-031547fc7eae.png">
 This is the frontend for the BitInfo forum!  
 
 It uses Angular to render data from an express/node.js server on top of a MongoDB database. https://github.com/NickAponte/BitcoinInfo-backend. 
